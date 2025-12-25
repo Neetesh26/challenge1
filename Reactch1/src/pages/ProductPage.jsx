@@ -71,7 +71,7 @@ const ProductPage = () => {
         {/* Category */}
         <div className={`border p-4 ${showFilter ? "" : "hidden"} sm:block`}>
           <p className="mb-3 font-medium">CATEGORIES</p>
-          {["Men", "Women", "Kids"].map((cat) => (
+          {["Mens", "Womens", "Kids"].map((cat) => (
             <label key={cat} className="flex gap-2 text-sm">
               <input type="checkbox" value={cat} onChange={toggleCategory} />
               {cat}
