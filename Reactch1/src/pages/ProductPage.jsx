@@ -19,6 +19,8 @@ const ProductPage = () => {
 
   const toggleSubcategory = useCallback((e) => {
     const value = e.target.value;
+    console.log(value);
+    
     setSubCategory((prev) =>
       prev.includes(value)
         ? prev.filter((item) => item !== value)
@@ -37,7 +39,7 @@ const ProductPage = () => {
 
     if (subCategory.length > 0) {
       updatedProducts = updatedProducts.filter((item) =>
-        subCategory.includes(item.subCategory)
+        subCategory.includes(item.brand)
       );
     }
 
