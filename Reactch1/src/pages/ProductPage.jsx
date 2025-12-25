@@ -8,7 +8,6 @@ const ProductPage = () => {
   const [subCategory, setSubCategory] = useState([]);
   const [sortType, setSortType] = useState("relevant");
 
-  // toggle category
   const toggleCategory = useCallback((e) => {
     const value = e.target.value;
     setCategory((prev) =>
@@ -18,7 +17,6 @@ const ProductPage = () => {
     );
   }, []);
 
-  // toggle subcategory
   const toggleSubcategory = useCallback((e) => {
     const value = e.target.value;
     setSubCategory((prev) =>
@@ -28,25 +26,21 @@ const ProductPage = () => {
     );
   }, []);
 
-  // 🔥 FILTER + SORT (WORKING)
   const filterProduct = useMemo(() => {
     let updatedProducts = [...products];
 
-    // category filter
     if (category.length > 0) {
       updatedProducts = updatedProducts.filter((item) =>
         category.includes(item.category)
       );
     }
 
-    // subcategory filter
     if (subCategory.length > 0) {
       updatedProducts = updatedProducts.filter((item) =>
         subCategory.includes(item.subCategory)
       );
     }
 
-    // sorting
     if (sortType === "under-1500") {
       updatedProducts.sort((a, b) => a.price - b.price);
     } else if (sortType === "above-1500") {
@@ -59,7 +53,6 @@ const ProductPage = () => {
   return (
     <div className="flex flex-col sm:flex-row gap-10 pt-10 border-t">
 
-      {/* FILTERS */}
       <div className="min-w-60">
         <p
           onClick={() => setShowFilter(!showFilter)}
@@ -68,7 +61,6 @@ const ProductPage = () => {
           FILTERS
         </p>
 
-        {/* Category */}
         <div className={`border p-4 ${showFilter ? "" : "hidden"} sm:block`}>
           <p className="mb-3 font-medium">CATEGORIES</p>
           {["Mens", "Womens", "Kids"].map((cat) => (
@@ -90,7 +82,6 @@ const ProductPage = () => {
         </div>
       </div>
 
-      {/* PRODUCTS */}
       <div className="flex-1">
         <div className="flex justify-end mb-4">
           <select
