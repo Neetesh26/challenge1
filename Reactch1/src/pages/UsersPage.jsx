@@ -57,4 +57,4 @@ const UserPage = () => {
   );
 };
 
-export default UserPage;
+export default React.memo(UserPage);
