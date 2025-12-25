@@ -2,7 +2,7 @@ import React from "react";
 
 const UserCard = ({ user }) => {
   return (
-    <div className="bg-white  rounded-xl shadow-md p-6 w-64 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+    <div className="flex flex-wrap  gap-2">
       {/* Avatar */}
       <div className="flex justify-center mb-4">
         <img

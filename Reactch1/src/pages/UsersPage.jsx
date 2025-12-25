@@ -3,7 +3,7 @@ import { users } from "../data";
 import UserCard from "../components/UserCard";
 
 const UserPage = () => {
-  const [Allusers, setAllusers] = useState(users);
+  const [Allusers] = useState(users);
   const [filter, setFilter] = useState("all");
 
   // Handle filter change
@@ -21,37 +21,42 @@ const UserPage = () => {
   });
 
   return (
-    <div>
+    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
       {/* Footer Filter */}
-      <footer style={{ marginTop: "20px" }}>
+      <footer style={{ marginBottom: "20px" }}>
         <label htmlFor="rating-filter">Filter by Rating: </label>
         <select id="rating-filter" value={filter} onChange={handleFilterChange}>
           <option value="all">All</option>
+          <option value="5">5 Stars</option>
           <option value="4">4 Stars & Up</option>
           <option value="3">3 Stars & Up</option>
-          <option value="5">5 Stars</option>
         </select>
       </footer>
 
-      <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-        <h1>All Users</h1>
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          {filteredUsers.map((user) => (
-            <div
-              key={user.id} // Use unique ID instead of index
-              style={{
-                border: "1px solid #ccc",
-                padding: "10px",
-                borderRadius: "5px",
-                width: "fit-content",
-                display: "flex",
-              }}
-            >
-              {/* Pass the user prop to UserCard */}
-              <UserCard user={user} />
-            </div>
-          ))}
-        </div>
+      <h1 style={{ marginBottom: "20px" }}>All Users</h1>
+
+      {/* User Cards Container */}
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap", // Allow wrapping
+          gap: "20px",      // Space between cards
+        }}
+      >
+        {filteredUsers.map((user) => (
+          <div
+            key={user.id}
+            style={{
+              flex: "0 1 250px", // Card width and flex shrink/grow
+              border: "1px solid #ccc",
+              borderRadius: "5px",
+              padding: "10px",
+              boxSizing: "border-box",
+            }}
+          >
+            <UserCard user={user} />
+          </div>
+        ))}
       </div>
     </div>
   );
