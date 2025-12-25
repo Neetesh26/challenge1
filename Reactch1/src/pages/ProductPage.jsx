@@ -79,10 +79,9 @@ const ProductPage = () => {
           ))}
         </div>
 
-        {/* Subcategory */}
         <div className={`border p-4 mt-5 ${showFilter ? "" : "hidden"} sm:block`}>
           <p className="mb-3 font-medium">TYPE</p>
-          {["Topwear", "Bottomwear", "Winterwear"].map((sub) => (
+          {["Zudio", "Zara", "Louis Vuitton"].map((sub) => (
             <label key={sub} className="flex gap-2 text-sm">
               <input type="checkbox" value={sub} onChange={toggleSubcategory} />
               {sub}
